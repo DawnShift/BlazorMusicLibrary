@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.EntityFrameworkCore;
 using MusicStoreDataStore.Interfaces;
 using MusicStoreDataStore.Models;
 using ShearedModel;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -23,22 +26,24 @@ namespace MusicStoreBE.Controllers
         }
         // GET: api/<controller>
         [HttpGet]
-        public IEnumerable<AlbumDto> Get() => mapper.Map<IEnumerable<AlbumDto>>(albumRepo.GetAll());
+        public IEnumerable<AlbumDto> Get() => mapper.Map<IEnumerable<AlbumDto>>
+                                              (albumRepo.GetAll());
 
-
-        [HttpGet("{Search}")]
-        public IEnumerable<AlbumDto> SearchAlbum(string search)
-        {
-            throw new NotImplementedException();
-        }
+        //[HttpGet("Search/{Search}")]
+        //public IEnumerable<AlbumDto> SearchAlbum(string search)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public AlbumDto Get(int id)
         {
-            return "value";
+         var a=   albumRepo.FilteredGetAll().Include(x => x.Artist)
+                            .Where(x => x.Id == id).SingleOrDefault();
+            var data = mapper.Map<AlbumDto>(a);
+            return data;
         }
-
         // POST api/<controller>
         [HttpPost]
         public void Post([FromBody]string value)

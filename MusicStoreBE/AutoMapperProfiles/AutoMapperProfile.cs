@@ -13,6 +13,8 @@ namespace MusicStoreBE.AutoMapperProfiles
         {
             CreateMap<Album, AlbumDto>().ReverseMap();
             CreateMap<Artist, ArtistDto>().ReverseMap();
+            CreateMap<Artist, AlbumArtistDto>().ReverseMap();
+            CreateMap<Album, ArtistAlbumsDto>().ReverseMap();
         }
     }
 }
