@@ -30,6 +30,7 @@ namespace BlazorApp
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddHttpClient<IAlbumService, AlbumService>(client=> client.BaseAddress=new Uri("https://localhost:44315/"));  
+            services.AddHttpClient<IArtistServices, ArtistServices>(client=> client.BaseAddress=new Uri("https://localhost:44315/"));  
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

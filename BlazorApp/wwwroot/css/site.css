@@ -197,7 +197,16 @@ app {
     left: 55%;
     position: absolute;
 }
-
+.green {
+background-color:green;
+}.orange {
+background-color:orange;
+}.red {
+background-color:red;
+}
+ .pointer{
+   cursor:pointer;
+ }
 @keyframes spin {
     0% {
         transform: rotate(0deg)

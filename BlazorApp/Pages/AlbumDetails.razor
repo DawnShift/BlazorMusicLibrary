@@ -11,10 +11,10 @@ else
     <div class="col-8">
         <div class="card">
             <div class="card-header">
-                <h1>@Album.Name</h1>
+                <h1>@Album.Name </h1>
             </div>
             <div class="card-body text-center">
-                <img class="card-img-top" src="@Album.AlbumArt" />
+                <img class="card-img-top" src="@Album.AlbumArt"/>
                 <h4>Artist Name : <a href="#">@($"{Album.Artist.Name} {Album.Artist.LastName}") </a></h4>
                 <h4>Release Date : @Album.Date.ToString("dd-MMM-yy")</h4>
             </div>

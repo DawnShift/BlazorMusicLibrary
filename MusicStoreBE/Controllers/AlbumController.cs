@@ -14,12 +14,12 @@ using System.Linq;
 namespace MusicStoreBE.Controllers
 {
     [Route("api/[controller]")]
-    public class MusicStoreController : Controller
+    public class AlbumController : Controller
     {
         private readonly IMapper mapper;
         private readonly IRepository<Album> albumRepo;
 
-        public MusicStoreController(IMapper _mapper, IRepository<Album> _albumRepo)
+        public AlbumController(IMapper _mapper, IRepository<Album> _albumRepo)
         {
             mapper = _mapper;
             albumRepo = _albumRepo;
@@ -39,9 +39,9 @@ namespace MusicStoreBE.Controllers
         [HttpGet("{id}")]
         public AlbumDto Get(int id)
         {
-         var a=   albumRepo.FilteredGetAll().Include(x => x.Artist)
+         var result=   albumRepo.FilteredGetAll().Include(x => x.Artist)
                             .Where(x => x.Id == id).SingleOrDefault();
-            var data = mapper.Map<AlbumDto>(a);
+            var data = mapper.Map<AlbumDto>(result);
             return data;
         }
         // POST api/<controller>

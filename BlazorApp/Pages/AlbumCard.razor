@@ -1,0 +1,19 @@
+﻿@inherits AlbumCardBase
+@inject NavigationManager NavigationManager
+<div class="card m-3" style="min-width:15rem;max-width:30.5%">
+    <div class="card-header">
+        <h4> <input type="checkbox" @onchange="CheckBoxChanged" />  @Album.Name</h4>
+        
+        <div class="pointer" @onclick="@(e=> {NavigationManager.NavigateTo($"albumdetails/{Album.Id}");})">
+            <img class="card-img-top img-Thubnail" src="@Album.AlbumArt"/>
+        </div>
+    </div>
+    <div class="card-footer text-center">
+        @if (ShowControls)
+        {
+            @*<a href="@($"albumdetails/{Album.Id}")" class="btn btn-primary m-1">View</a>*@
+            <a href="@($"editalbum/{Album.Id}")" class="btn btn-primary m-1">Edit</a>
+            <a href="#" class="btn btn-danger m-1">Delete</a>
+        }
+    </div>
+</div>
