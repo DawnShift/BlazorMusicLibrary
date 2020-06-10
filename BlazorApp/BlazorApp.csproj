@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BlazorCustomComponents\BlazorCustomComponents.csproj" />
     <ProjectReference Include="..\ShearedModel\ShearedModel.csproj" />
   </ItemGroup>
 

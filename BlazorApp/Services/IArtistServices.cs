@@ -13,7 +13,7 @@ namespace BlazorApp.Services
     public interface IArtistServices
     {
         Task<IEnumerable<ArtistDto>> GetAll();
-        Task<ArtistDto> Get(int id);
+        Task<ArtistDto> Get(int id); 
     }
     public class ArtistServices : IArtistServices
     {

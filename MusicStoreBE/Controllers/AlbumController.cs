@@ -39,10 +39,19 @@ namespace MusicStoreBE.Controllers
         [HttpGet("{id}")]
         public AlbumDto Get(int id)
         {
-         var result=   albumRepo.FilteredGetAll().Include(x => x.Artist)
-                            .Where(x => x.Id == id).SingleOrDefault();
+            var result = albumRepo.FilteredGetAll().Include(x => x.Artist)
+                               .Where(x => x.Id == id).SingleOrDefault();
             var data = mapper.Map<AlbumDto>(result);
             return data;
+        }
+
+        [Route("UpdateAlbum")]
+        [HttpPut]
+        public AlbumDto Update([FromBody] AlbumDto model)
+        {
+            var album = mapper.Map<Album>(model);
+            albumRepo.Update(album);
+            return mapper.Map<AlbumDto>(album);
         }
         // POST api/<controller>
         [HttpPost]
