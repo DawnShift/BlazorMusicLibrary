@@ -11,10 +11,11 @@
 else
 {
 
-    <div class="card-deck">
-        @foreach (var item in Albums)
-        {
-          <AlbumCard Album="item" ShowControls="ShowControls" OnAlbumSelection="AlbumSelectionChange"></AlbumCard>
-        }
-    </div>
+<div class="row">
+    @foreach (var item in Albums)
+    {
+            <AlbumCard Album="item" ShowControls="ShowControls" OnAlbumSelection="AlbumSelectionChange"></AlbumCard>
+       
+    }
+</div>
 }

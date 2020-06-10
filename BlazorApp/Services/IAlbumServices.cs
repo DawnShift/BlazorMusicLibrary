@@ -11,19 +11,16 @@ namespace BlazorApp.Services
     {
         Task<IEnumerable<AlbumDto>> GetAll();
         Task<AlbumDto>Get(int id);
-        Task<AlbumDto> Update(AlbumDto model);
+        Task<AlbumDto> Update(AlbumDto model); 
+        Task<AlbumDto> Insert(AlbumDto model);
     }
     public class AlbumService : IAlbumService
     {
         private readonly HttpClient httpClient;
-        public AlbumService(HttpClient httpClient)
-        {
-            this.httpClient = httpClient;
-        }
-
-        public async Task<AlbumDto> Get(int id)=> await httpClient.GetJsonAsync<AlbumDto>($"api/album/{id}");
-
+        public AlbumService(HttpClient httpClient) => this.httpClient = httpClient; 
+        public async Task<AlbumDto> Get(int id)=> await httpClient.GetJsonAsync<AlbumDto>($"api/album/{id}"); 
         public async Task<IEnumerable<AlbumDto>> GetAll() => await httpClient.GetJsonAsync<AlbumDto[]>("api/album"); 
+        public async Task<AlbumDto> Insert(AlbumDto model) => await httpClient.PostJsonAsync<AlbumDto>("api/album", model); 
         public async Task<AlbumDto> Update(AlbumDto model) => await httpClient.PutJsonAsync<AlbumDto>("api/album/UpdateAlbum",model);
          
     }

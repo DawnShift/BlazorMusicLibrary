@@ -11,10 +11,9 @@ namespace BlazorApp.Pages
         [Inject]
         public IAlbumService AlbumsService { get; set; }
         [Inject]
-        public IArtistServices ArtistServices { get; set; }
-
+        public IArtistServices ArtistServices { get; set; } 
         [Inject]
-        public NavigationManager nav { get; set; }
+        public NavigationManager Nav { get; set; }
 
         public AlbumDto Album { get; set; }
         [Parameter]
@@ -31,7 +30,7 @@ namespace BlazorApp.Pages
             var result = await AlbumsService.Update(Album);
             if (result != null)
             {
-                nav.NavigateTo("/");
+                Nav.NavigateTo("/");
             }
         }
     }

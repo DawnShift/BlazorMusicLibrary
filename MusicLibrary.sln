@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlMusicStore", "BlMusicStor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp", "BlazorApp\BlazorApp.csproj", "{D72D4AAF-921A-4A03-84DE-B058A9AF8290}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorCustomComponents", "BlazorCustomComponents\BlazorCustomComponents.csproj", "{65C18C2D-1199-486A-BA8D-54E1566C2086}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorCustomComponents", "BlazorCustomComponents\BlazorCustomComponents.csproj", "{65C18C2D-1199-486A-BA8D-54E1566C2086}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

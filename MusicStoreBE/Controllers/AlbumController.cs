@@ -55,8 +55,11 @@ namespace MusicStoreBE.Controllers
         }
         // POST api/<controller>
         [HttpPost]
-        public void Post([FromBody]string value)
+        public AlbumDto Post([FromBody] AlbumDto model)
         {
+            var data = mapper.Map<Album>(model);
+            albumRepo.Insert(data);
+            return mapper.Map<AlbumDto>(data);
         }
 
         // PUT api/<controller>/5
