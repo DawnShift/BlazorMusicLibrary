@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace ShearedModel
@@ -12,8 +13,10 @@ namespace ShearedModel
         public AlbumArtistDto Artist { get; set; }
         [Required]
         public int ArtistId { get; set; }
+        [Required(ErrorMessage = "Please Choose a Valid File")]
         public string AlbumArt { get; set; }
         [Required]
         public DateTime Date { get; set; }
+        public IFormFile AlbumPic { get; set; }
     }
 }

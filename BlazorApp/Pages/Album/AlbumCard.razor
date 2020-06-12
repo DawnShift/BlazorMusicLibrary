@@ -6,7 +6,7 @@
             <h4> <input type="checkbox" @onchange="CheckBoxChanged" />  @Album.Name</h4>
 
             <div class="pointer" @onclick="@(e=> {NavigationManager.NavigateTo($"albumdetails/{Album.Id}");})">
-                <img class="card-img-top img-Thubnail" src="@Album.AlbumArt" />
+                <img class="card-img-top img-Thubnail" src="data:image/png;base64,@Album.AlbumArt" />
             </div>
         </div>
         <div class="card-footer text-center">

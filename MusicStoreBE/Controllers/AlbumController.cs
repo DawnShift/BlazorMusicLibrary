@@ -1,12 +1,15 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using MusicStoreDataStore.Interfaces;
 using MusicStoreDataStore.Models;
 using ShearedModel;
+using ShearedModel.Sheared_Classes;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -18,16 +21,21 @@ namespace MusicStoreBE.Controllers
     {
         private readonly IMapper mapper;
         private readonly IRepository<Album> albumRepo;
+        private readonly IWebHostEnvironment environment;
 
-        public AlbumController(IMapper _mapper, IRepository<Album> _albumRepo)
+        public AlbumController(IMapper _mapper, IRepository<Album> _albumRepo, IWebHostEnvironment environment)
         {
             mapper = _mapper;
             albumRepo = _albumRepo;
+            this.environment = environment;
         }
         // GET: api/<controller>
         [HttpGet]
-        public IEnumerable<AlbumDto> Get() => mapper.Map<IEnumerable<AlbumDto>>
-                                              (albumRepo.GetAll());
+        public IEnumerable<AlbumDto> Get()
+        {
+            var data = mapper.Map<IEnumerable<AlbumDto>>(albumRepo.GetAll());
+            return data.Select(x => { x.AlbumArt = ImageHandler.CreateBase64Images(Path.Combine(environment.WebRootPath, x.AlbumArt)); return x; }).AsEnumerable();
+        }
 
         //[HttpGet("Search/{Search}")]
         //public IEnumerable<AlbumDto> SearchAlbum(string search)
@@ -42,6 +50,7 @@ namespace MusicStoreBE.Controllers
             var result = albumRepo.FilteredGetAll().Include(x => x.Artist)
                                .Where(x => x.Id == id).SingleOrDefault();
             var data = mapper.Map<AlbumDto>(result);
+             data.AlbumArt = ImageHandler.CreateBase64Images(Path.Combine(environment.WebRootPath, data.AlbumArt));
             return data;
         }
 

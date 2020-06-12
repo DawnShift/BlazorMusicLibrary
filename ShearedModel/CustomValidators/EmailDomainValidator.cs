@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace ShearedModel.CustoValidators
+namespace ShearedModel.CustomValidators
 {
     public class EmailDomainValidator : ValidationAttribute
     {

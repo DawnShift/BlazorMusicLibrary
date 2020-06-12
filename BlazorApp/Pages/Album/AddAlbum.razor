@@ -7,42 +7,50 @@
 }
 else
 {
-    <EditForm Model="@Album" OnValidSubmit="HandleSubmit">
-        <DataAnnotationsValidator />
-        <h3>AddAlbum</h3>
-        <hr />
-        <ValidationSummary />
-        <hr />
-        <div class="form-group row">
-            <label for="name" class="col-sm-2 col-form-label">Name</label>
-            <div class="col-sm-6">
-                <InputText id="name" class="form-control" placeholder="Album Name" @bind-Value="Album.Name"></InputText>
-            </div>
+<EditForm Model="@Album" OnValidSubmit="HandleSubmit">
+    <DataAnnotationsValidator />
+    <h3>AddAlbum</h3>
+    <hr />
+    <ValidationSummary />
+    <hr />
+    <div class="form-group row">
+        <label for="name" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-6">
+            <InputText id="name" class="form-control" placeholder="Album Name" @bind-Value="Album.Name"></InputText>
         </div>
+    </div>
 
-        <div class="form-group row">
-            <label for="ArtistId" class="col-sm-2 col-form-label">Artist</label>
-            <div class="col-sm-6">
-                <CustomInputSelect id="ArtistId" @bind-Value="Album.ArtistId" class="form-control">
-                    @foreach (var item in Artists)
-                        {
-                        <option value="@item.Key">@($"{item.Value}")</option>
-                        } 
-                </CustomInputSelect>
-            </div>
+    <div class="form-group row">
+        <label for="ArtistId" class="col-sm-2 col-form-label">Artist</label>
+        <div class="col-sm-6">
+            <CustomInputSelect id="ArtistId" @bind-Value="Album.ArtistId" class="form-control">
+                @foreach (var item in Artists)
+                    {
+                    <option value="@item.Key">@($"{item.Value}")</option>
+                    } 
+            </CustomInputSelect>
         </div>
-        <div class="alert alert-info">
-            <p>Please click <a href="/">here</a> to add a new Artist</p>
-        </div>
+    </div>
+    <div class="alert alert-info">
+        <p>Please click <a href="/">here</a> to add a new Artist</p>
+    </div>
 
-        <div class="form-group row">
-            <label for="ArtistDate" class="col-sm-2 col-form-label">Release Date</label>
-            <div class="col-sm-6">
-                <InputDate id="ArtistDate" class="form-control" placeholder="Release Date" @bind-Value="Album.Date"></InputDate>
-            </div>
+    <div class="form-group row">
+        <label for="ArtistDate" class="col-sm-2 col-form-label">Release Date</label>
+        <div class="col-sm-6">
+            <InputDate id="ArtistDate" class="form-control" placeholder="Release Date" @bind-Value="Album.Date"></InputDate>
         </div>
-        <div class="form-group row">
-            <input type="submit" value="Submit" />
-        </div>
-    </EditForm>
+    </div>
+    <div class="form-group row">
+        <label for="ArtistDate" class="col-sm-2 col-form-label">Album Art</label>
+        <div class="col-sm-6">
+            <InputFile OnChange="HandleFileUpload"  class="form-control-file"/>
+            <input type="hidden" @bind-value="Album.AlbumArt" />
+
+        </div>  
+    </div>
+    <div class="form-group row">
+        <input type="submit" value="Submit" />
+    </div>
+</EditForm>
 }

@@ -183,6 +183,7 @@ app {
 }
 .img-Thubnail {
     height: 200px;
+    max-width:33%
     width: auto;
 }
 
