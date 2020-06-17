@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using ShearedModel.CustomValidators;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -12,6 +13,7 @@ namespace ShearedModel
         public string Name { get; set; }
         public AlbumArtistDto Artist { get; set; }
         [Required]
+        [MinValueValidator(AllowedMinimumValue = 1, ErrorMessage = "Please select an Artist")]
         public int ArtistId { get; set; }
         [Required(ErrorMessage = "Please Choose a Valid File")]
         public string AlbumArt { get; set; }

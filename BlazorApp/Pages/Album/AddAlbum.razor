@@ -9,7 +9,7 @@ else
 {
 <EditForm Model="@Album" OnValidSubmit="HandleSubmit">
     <DataAnnotationsValidator />
-    <h3>AddAlbum</h3>
+    <h3>Add Album</h3>
     <hr />
     <ValidationSummary />
     <hr />
@@ -24,6 +24,7 @@ else
         <label for="ArtistId" class="col-sm-2 col-form-label">Artist</label>
         <div class="col-sm-6">
             <CustomInputSelect id="ArtistId" @bind-Value="Album.ArtistId" class="form-control">
+                <option value="" selected="selected">Select Artist</option>
                 @foreach (var item in Artists)
                     {
                     <option value="@item.Key">@($"{item.Value}")</option>

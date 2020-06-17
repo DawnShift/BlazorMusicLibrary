@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace BlazorApp.Services
@@ -14,9 +15,9 @@ namespace BlazorApp.Services
         public async Task<string> FileUpload(MultipartFormDataContent file)
         {
             var data = await httpClient.PostAsync("api/Files", file);
-            //if (data.StatusCode == HttpStatusCode.OK)
-              string a=   await data.Content.ReadAsStringAsync();
-            return a;
+            if (data.StatusCode == HttpStatusCode.OK)
+             return  await data.Content.ReadAsStringAsync();
+            return string.Empty;
         }
     }
 }
